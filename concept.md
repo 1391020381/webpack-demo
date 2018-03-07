@@ -47,7 +47,36 @@
   1. Entry
      * 代码入口
      * 打包的入口
-     * 单个或多个(多页应用多个入口,或者业务代码和框架代码分开<打包的入口与运行的入口不一定一样>)
+     * 单个或多个(多页应用多个入口,或者业务代码和框架代码分开<打包的入口与运行的入口不一定一样  >)
   2. Ouput
+     * 打包成的文件(boundle)
+     * 一个或多个
+     * 自定义规则
+     * 配合CDN
   3. Loaders
+     1. 编译相关
+        * babel-loader  ts-loader
+     2. 样式相关
+        * style-loader  css-loader   less-loader  postcss-loader
+     3. 文件相关
+        * file-loader  url-loader   
   4. Plugins 
+      1. 可以参与打包整个过程
+      2. 打包优化和压缩
+      3. 配置编译时的变量 
+      4. 极其灵活
+
+      ## 常用Plugins
+      1. 优化相关
+        * CommonsChunkPlugin  
+        * UglifyjsWebpackPlugin
+      2. 功能相关
+         *  ExtractTextWebpackPlugin
+         *  HtmlWebpackPlugin
+         * HotModuleReplacementPlugin
+         * CopyWebpackPlguin 
+
+      # 名词
+      * Chunk(代码块)
+      * Bundle
+      * module   
