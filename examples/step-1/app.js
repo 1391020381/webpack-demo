@@ -1,3 +1,5 @@
+// import 'babel-polyfill'
+
 // es6
 import sum from "./sum";
 
@@ -13,3 +15,4 @@ require(['./muti'],function(muti){
 
 console.log('sum(23,24)=',sum(23,24))
 console.log('minus(24-17)=',minus(24,17))
+console.log(Object.assign({},{a:'justdoit'}))
