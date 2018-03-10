@@ -3,7 +3,8 @@ const path = require('path')
 module.exports = {
     entry :{
         pageA:'./src/pageA.js',
-        pageB:'./src/pageB.js'
+        pageB:'./src/pageB.js',
+        'vendor':['lodash']
     },
     output:{
         path:path.resolve(__dirname,'./dist'),
@@ -27,8 +28,19 @@ module.exports = {
     },
     plugins:[
         new webpack.optimize.CommonsChunkPlugin({
-        name:'common',
-        minChunks:2
+            name:'common',
+            minChunks:2,
+            chunks:['pageA','pageB']
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+        // name:'common',
+        // minChunks:2
+        name:'vendor',
+        minChunks:Infinity
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+        name:'mainfest',
+        minChunks:Infinity
     })
 ]
 }
