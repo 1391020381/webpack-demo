@@ -1,6 +1,6 @@
 module.exports = {
     entry :{
-        app:'./app.js'
+        app:'./app.ts'
     },
     output:{
         filename:'[name].[hash:5].js'
@@ -11,6 +11,12 @@ module.exports = {
                 test:/\.js$/,
                 use:'babel-loader',
                 exclude:'/node_modules/'
+            },
+            {
+                test:/\.tsx?$/,
+                use:{
+                    loader:'ts-loader'
+                }
             }
         ]
     }
