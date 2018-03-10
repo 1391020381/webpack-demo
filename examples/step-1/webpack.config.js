@@ -1,9 +1,14 @@
+const webpack = require('webpack')
+const path = require('path')
 module.exports = {
     entry :{
-        app:'./app.ts'
+        pageA:'./src/pageA.js',
+        pageB:'./src/pageB.js'
     },
     output:{
-        filename:'[name].[hash:5].js'
+        path:path.resolve(__dirname,'./dist'),
+        filename:'[name].boundle.js',
+        chunkFilename:'[name].chunk.js'
     },
     module:{
         rules:[
@@ -19,5 +24,11 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins:[
+        new webpack.optimize.CommonsChunkPlugin({
+        name:'common',
+        minChunks:2
+    })
+]
 }

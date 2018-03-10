@@ -30,4 +30,14 @@
   1. npm install typings -g
   2. typing install loadsh
 
+
+# 提取公用代码
+* webpack.optimize.CommonsChunkPlugin(多入口)
+  1. 减少冗余代码
+  2. 提高页面加载速度 
+* 使用场景
+  1. 单页应用
+  2. 单页应用 + 第三方依赖
+  3. 多页应用 + 第三方依赖 + wepack生成的代码 
+
     
