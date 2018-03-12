@@ -8,6 +8,7 @@ module.exports = {
     },
     output:{
         path:path.resolve(__dirname,'./dist'),
+        publicPath:'./dist/',   // 动态加载后的地址
         filename:'[name].boundle.js',
         chunkFilename:'[name].chunk.js'
     },
@@ -15,7 +16,7 @@ module.exports = {
         rules:[
             {
                 test:/\.js$/,
-                use:'babel-loader',
+                loader:'babel-loader',
                 exclude:'/node_modules/'
             },
             {
@@ -23,18 +24,43 @@ module.exports = {
                 use:{
                     loader:'ts-loader'
                 }
+            },
+            // {
+            //     test:/\.css$/,   // 在html中链乳 link标签，而不是style 了解即可 
+            //     use:[
+            //         {
+            //             loader:'style-loader/url'
+            //         },
+            //         {
+            //             loader:'file-loader'
+            //         }
+            //     ]
+            // }，
+            {
+                test:/\.css$/,  
+                use:[
+                    {
+                        loader:'style-loader'
+                    },
+                    {
+                        loader:'css-loader'
+                    }
+                ]
             }
         ]
     },
     plugins:[
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name:'common',
+        //     minChunks:2,
+        //     chunks:['pageA','pageB']
+        // }),
         new webpack.optimize.CommonsChunkPlugin({
-            name:'common',
-            minChunks:2,
-            chunks:['pageA','pageB']
+            async:'async-common',
+            children:true,
+            minChunks:2
         }),
         new webpack.optimize.CommonsChunkPlugin({
-        // name:'common',
-        // minChunks:2
         name:'vendor',
         minChunks:Infinity
     }),
