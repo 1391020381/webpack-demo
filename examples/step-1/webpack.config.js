@@ -53,6 +53,10 @@ module.exports = {
                         options:{
                             ident:'postcss',
                             plugins:[
+                                rquire('postcss-sprites')({
+                                    spritePath:'dist/assets/imgs/spirtes',
+                                    retina:true   // 图片以 1@2x.png命名
+                                }),
                                 require('autoprefixer')(),
                                 require('"postcss-cssnext')()
                             ]
@@ -60,6 +64,37 @@ module.exports = {
                     },
                     {
                         loader:'less-loader'
+                    }
+                ]
+            },
+            {
+                test:/\.(png|jpg|jpeg|gift)$/,
+                use:[
+                    // {
+                    //     loader:'file-loader',
+                    //     options:{
+                    //         publicPath:'',
+                    //         outputPath:'dist/',
+                    //         useRelativePath:true
+                    //     }
+                    // }
+                    {
+                        loader:'url-loader',
+                        options:{
+                            name:'[name][hash:5].[ext]',
+                            limit:5000,
+                            publicPath:'',
+                           outputPath:'dist/',
+                             useRelativePath:true
+                        }
+                    },
+                    {
+                        loader:'img-loader',
+                        options:{
+                            pngquant:{
+                                quality:80
+                            }
+                        }
                     }
                 ]
             }
