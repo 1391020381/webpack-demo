@@ -1,5 +1,8 @@
 const webpack = require('webpack')
 const path = require('path')
+const Purifycss = require('purifycss-webpack')
+const globAll = require('glob-all')
+const  ExtractTetWebpackPlguin  = require('extract-text-webpack-plugin')
 module.exports = {
     entry :{
         pageA:'./src/pageA.js',
@@ -44,6 +47,19 @@ module.exports = {
                     },
                     {
                         loader:'css-loader'
+                    },
+                    {
+                        loader:'postcss-loader',
+                        options:{
+                            ident:'postcss',
+                            plugins:[
+                                require('autoprefixer')(),
+                                require('"postcss-cssnext')()
+                            ]
+                        }
+                    },
+                    {
+                        loader:'less-loader'
                     }
                 ]
             }
@@ -67,6 +83,16 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
         name:'mainfest',
         minChunks:Infinity
-    })
+    }),
+    new ExtractTetWebpackPlguin({
+        filename:'[name].min.css'
+    }),
+    new Purifycss({
+        paths:globAll.sync([
+            path.join(__dirname,'./*.html'),
+            path.join(__dirname,'./src/*js')
+        ])
+    }),
+    new webpack.optimize.UglifyJsPlugin()  // Tree Shaking
 ]
 }

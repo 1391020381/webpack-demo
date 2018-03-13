@@ -73,7 +73,69 @@
         1. insertAt(插入位置)
         2. insertInto(插入到dom)
         3. singleton(是否使用一个style)
-        4. transform(转化,浏览器环境下,插入页面前)
+        4. transform(转化,浏览器环境下,插入页面前,在浏览器端)
   * css-loader<js引入其他css>
+     * 配置
+      * alias(解析的别名)
+      * importLodder(@impoort)
+      * Minimize  (是否压缩)
+      * modules(启用css-modules)
 
+      ## css-module
+       * :local
+       * :global
+       * compose
+       * compose ... from path
+     ## 提取 css
+     *  extract-loader
+     * ExtractTextWebpackPlugin 
+     ## PostCSS in Webpack
+     * PostCSS
+       * Autoprefixer<添加浏览器前缀>
+       * css-nano<帮助我们优化,压缩,css-loader中有用>
+       * css-next<使用 新语法  css Variables  custom selectors calc()  它包含autoprefixer>
+       * npm install --save-dev postcss postcss-loader autoprefixer cssnano postcss-cssnext 
+
+       ## Broswerslist
+        * 所有插件都公用 package.json
+        * browserslistrc
+ # 其他
+ * postcss-import
+ * postcss-url
+ * psotcss-asserts
+
+ # Tree Shaking
+ * JS Tree Shaking
+ * CSS Tree Shaking
+
+ ## 使用场景
+   * 常规优化
+   * 引入第三库的某个功能<注意第三方库的 是否有利于 Tree Shaking>
+
+ * webpack2以上会标记哪些代码没有用 再使用 Webpack.optimize.uglifyJS来移除 
+
+ * 打包后的文件 使用  /* harmony export (immutable)标识使用, unused harmony export */ 没有使用 
+
+
+ 1. npm install lodash  
+ 2. npm install loadash-es
+ 3. npm install babel-plugin-lodash  
+
+ ### CSS Tree Shaking
+   1. Purify css
+    * purifycss-webpack
+    * npm install purifycss-webpack glob-all --save-dev
+
+  # 文件处理
+  ## 图片处理
+   1. css中引入的图片
+       * file-loader
+   2. 自动合成雪碧图
+       * postcss-sprites
+   3. 压缩图片
+       * img-loader
+   4. base64编码
+     * url-loader
+  ## 字体文件
+  ## 第三JS库<cdn>  
     
