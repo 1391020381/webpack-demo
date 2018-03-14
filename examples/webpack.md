@@ -138,4 +138,24 @@
      * url-loader
   ## 字体文件
   ## 第三JS库<cdn>  
-    
+  ## 处理字体文件
+   * file-loader
+   * url-loader
+
+  # 第三方js库 
+    1. webpack.providePlugin
+    2. import-loader
+# HTML in Webpack
+```  
+  1. HtmlWebpackPlugin
+       * options {template,filename,minify,chunks,inject}
+       * npm install html-webpack-plugin --save-dev  
+    2. html-loader
+      * options {attrs:[img:src]} 
+
+      * require()
+```
+3.配合优化
+ 1. 提前载入webpack加载代码
+    * inline-manifest-webpack-plugin
+    * html-webpack-inline-chunk-plugin

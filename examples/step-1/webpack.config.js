@@ -2,7 +2,9 @@ const webpack = require('webpack')
 const path = require('path')
 const Purifycss = require('purifycss-webpack')
 const globAll = require('glob-all')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const  ExtractTetWebpackPlguin  = require('extract-text-webpack-plugin')
+const  htmlWebpackInlineChunkPlugin= require('html-webpack-inline-chunk-plugin')
 module.exports = {
     entry :{
         pageA:'./src/pageA.js',
@@ -85,7 +87,7 @@ module.exports = {
                             limit:5000,
                             publicPath:'',
                            outputPath:'dist/',
-                             useRelativePath:true
+                            //  useRelativePath:true
                         }
                     },
                     {
@@ -97,8 +99,47 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test:/\.(eot|woff|ttf|svg)$/,
+                use:{
+                    loader:'url-loader',
+                    options:{
+                        name:'[name][hash:5].[ext]',
+                        limit:5000,
+                        publicPath:'',
+                       outputPath:'dist/',
+                         useRelativePath:true
+                    }
+                }
+            },{
+                test:path.resolve(__dirname,'src/app.js'),
+                use:[
+                   {
+                    loader:'imports-loader',
+                    options:{
+                        $:'jquery'
+                    }
+                   }
+                ]
+            },
+            {
+                test:/\.html$/,
+                use:[
+                    {
+                        loader:'html-loader',
+                        options:{
+                            attrs:['img:src','img:data-src']
+                        }
+                    }
+                ]
             }
         ]
+    },
+    resolve:{
+        alias:{
+            jquery:path.resolve(__dirname,'src/libs/jquery.min.js') // 本地
+        }
     },
     plugins:[
         // new webpack.optimize.CommonsChunkPlugin({
@@ -119,6 +160,9 @@ module.exports = {
         name:'mainfest',
         minChunks:Infinity
     }),
+    new htmlWebpackInlineChunkPlugin({
+        inlineChunks:['mainfest']
+    }),
     new ExtractTetWebpackPlguin({
         filename:'[name].min.css'
     }),
@@ -127,6 +171,18 @@ module.exports = {
             path.join(__dirname,'./*.html'),
             path.join(__dirname,'./src/*js')
         ])
+    }),
+    new webpack.ProvidePlugin({
+        $:'jquery'  // 需 npm 安装  相当把 jquery注入到所有模块
+    }),
+    new HtmlWebpackPlugin({
+        filename:'index.html',
+        template:'./index.html',
+        inject:true,
+        chunks:['app'],
+        minify:{
+            collapseWhitespace:true
+        }
     }),
     new webpack.optimize.UglifyJsPlugin()  // Tree Shaking
 ]
