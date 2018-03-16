@@ -146,4 +146,15 @@
       * 文件压缩 base64编码
       * Tree shake
 
-   * webpack-merge   
+   * webpack-merge 
+      * webpack.dev.conf.js
+      * webpack.prod.conf.js 
+      * webpack-dev-server --env devvelopment --open --config build/weppack.dev.conf.js 
+
+ # 使用middleware搭建开发环境   
+  1. Express or Koa
+  2. webpack-dev-middleware
+  3. webpack-hot-middleware
+  4.  http-proxy-middleware
+  5. connect-history-api-fallback
+  6. opn
