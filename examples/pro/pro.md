@@ -8,7 +8,7 @@
    2. UglifyJsPlugin
       * parallel<并行>
       * cache
-   3. HappyPack给loader用
+   3. HappyPack给loader用<npm install happpack --save-dev>
       * HappyPack.ThreadPool 
    4. babel-loader
        * options.cacheDirectory
@@ -19,4 +19,5 @@
       * devtool:去除sourcemap
       * cache-loader  
       * 升级node
-      * 升级webpack         
+      * 升级webpack 
+ # 长缓存优化             
