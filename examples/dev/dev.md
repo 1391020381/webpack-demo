@@ -29,7 +29,8 @@
      }
      devServer:{  // 注意  output的publicpath:'/'
          port：'',
-         hot:true
+         hot:true,
+         hotOnly:true,
          inline:true,
          historyApiFallback:true||{rewrites:[  // true默认首页
              {
@@ -56,7 +57,9 @@
          }
 
      }
-     
+     if(module.hot){   // 在 js模块中
+         module.hot.accept()
+     }
      new webpack.HotModuleReplacementPlugin()
      new webpack.NamedModulesPlugin()
      ```
@@ -71,3 +74,76 @@
 3. express + webpack-dev-middleware
 
  * clean-webpack-plugin 
+# 调试
+ 1. Devtool<Source Map> 
+    * css-loader.option.sourcemap
+    * less-loader.option.sourcemap
+    * sass-loader.option.sourcemap
+    ```
+    // 在 webpack.config.js中
+    devtool:'eval'
+    ```
+    * 开发  cheap-moule-source-map
+    * css的sourcemap要在loader中开启sourcemap 
+    {
+        loader:'less-loader',
+        options:{'
+        sourceMap:true
+        }
+    }  
+       * style-loader的 singleton不能为true
+ 2. webpack.SourceMapDevToolPlugin
+ 3. webpack.EvalSourceMapDevToolPlugin
+
+ # 配置ESlint
+ * eslint
+    * https://standardjs.com
+    * eslint-config-standard
+    * eslint-plugin-promise
+    * eslint-plugin-standard 
+ * eslint-loader
+      * npm install eslint eslint-loader eslint-plugin-html  eslint-friendly-formatter --save-dev
+ * eslint-plugin-html
+ * eslint-friendly-formatter
+ * .eslintrc.*
+
+ ```
+ {
+     loader:'babel-loader',
+     options:{
+         presets:['env]
+     }
+ },
+ {
+     loader:'eslint-loader,
+     options:{
+         formatter:require('eslint-friendly-formatter')
+     }
+ }
+ ```
+
+ * eslintrc.js
+ ```
+ npm install eslint-config-standard eslint-plugin-promise eslint-plugin-node eslint-plugin-import eslint-plugin-standard --save-dev
+ module.exports = {
+     root:ture,
+     extends:'standard',
+     plugins:[],
+     env:{
+         browser:true,
+         node:true
+     },
+     rules:{
+
+     }
+ }
+ ```
+
+# 开发环境和生产环境
+   1. 生产环境
+      * 提取公用代码
+      * 压缩混淆
+      * 文件压缩 base64编码
+      * Tree shake
+
+   * webpack-merge   
