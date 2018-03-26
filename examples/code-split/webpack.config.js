@@ -1,5 +1,7 @@
 const path = require('path')
-const HtmlWebpackPlgun = require('html-webpack-plugin')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const cleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
   entry: {
     index: './src/index.js',
@@ -10,7 +12,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
-    new HtmlWebpackPlgun({
+    new cleanWebpackPlugin(['dist']),
+    new HtmlWebpackPlugin({
       title: 'Code Splitting',
       template: './src/index.html'
     })
