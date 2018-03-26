@@ -1,3 +1,4 @@
+# 文档还是英文的好,中文的滞后,可以对照着看
 # webpack-demo
 ![](https://github.com/1391020381/webpack-demo/blob/master/img/webpack.png?raw=true)
 # webpack概述
