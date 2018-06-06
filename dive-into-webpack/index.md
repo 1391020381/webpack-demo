@@ -16,3 +16,10 @@
     * webpack-dev-middleware是一个容器(wrapper) ,它可以把webpack处理后的文件传递给一个服务器(server)。
     webpack-dev-server在内部使用了它,同时,它也可以作为一个单独的包来使用,以便进行更多自定义设置来实现更多
     的需求。   
+ * 模块热更新
+ 1. js更新
+    * module.hot
+ 2.    借助于style-loader的帮助,css的模块热替换实际上相当简单的。当更新css依赖模块时,此
+ loader在后台使用module-hot-accept来修补(patch) <style>标签
+ 3. Vue Loader 此loader支持用于vue组件的HMR,提供开箱即用的体验
+
