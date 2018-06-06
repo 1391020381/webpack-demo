@@ -4,5 +4,6 @@
 
 
 # 安装与使用
-1. 默认以src下的index.js为入口,打包到dist中，命名为main.js
-2. npx webpack
+1. npm install webpack webpack-cli --save-dev
+2. 默认以src下的index.js为入口,打包到dist中，命名为main.js
+3.  npx webpack --config webpack.config.js
