@@ -34,6 +34,11 @@
      * DefinePlugin
          *    DefinePlugin 允许创建一个在编译时可以配置的全局常量。
          * [DefinePlugin](https://webpack.docschina.org/plugins/define-plugin)
+  # 代码分离
+ * 有三种常用的代码分离方法
+    * 入口起点:使用 entry配置手动地分离代码
+    * 防止重复：使用CommonsChunkPlugin去重合分离chunk
+    * 动态导入:通过模块的内联函数调用来分离代码       
  # 常用模块
  1. clean-webpack-plugin   
  2. html-webpack-plugin
