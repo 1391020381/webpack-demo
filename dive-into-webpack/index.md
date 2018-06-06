@@ -8,3 +8,11 @@
 2. 默认以src下的index.js为入口,打包到dist中，命名为main.js
 3.  npx webpack --config webpack.config.js
 * 以更直观的方式将模块和资源组合在一起。无需依赖于含有全局资源的/assets目录,而是将资源与代码组合在一起
+# Development
+* webpack-dev-server
+    * webpack-dev-server为你提供了一个简单的we服务器,并且能够实时重新加载(live reloading)
+    * 可以帮助你在代码发生变化后自动编译代码
+ * webpack-dev-middleware
+    * webpack-dev-middleware是一个容器(wrapper) ,它可以把webpack处理后的文件传递给一个服务器(server)。
+    webpack-dev-server在内部使用了它,同时,它也可以作为一个单独的包来使用,以便进行更多自定义设置来实现更多
+    的需求。   
