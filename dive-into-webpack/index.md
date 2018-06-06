@@ -7,3 +7,4 @@
 1. npm install webpack webpack-cli --save-dev
 2. 默认以src下的index.js为入口,打包到dist中，命名为main.js
 3.  npx webpack --config webpack.config.js
+* 以更直观的方式将模块和资源组合在一起。无需依赖于含有全局资源的/assets目录,而是将资源与代码组合在一起
