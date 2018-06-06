@@ -17,9 +17,26 @@
     webpack-dev-server在内部使用了它,同时,它也可以作为一个单独的包来使用,以便进行更多自定义设置来实现更多
     的需求。   
  * 模块热更新
- 1. js更新
-    * module.hot
- 2.    借助于style-loader的帮助,css的模块热替换实际上相当简单的。当更新css依赖模块时,此
- loader在后台使用module-hot-accept来修补(patch) <style>标签
- 3. Vue Loader 此loader支持用于vue组件的HMR,提供开箱即用的体验
+    1. js更新
+        * module.hot
+    2.    借助于style-loader的帮助,css的模块热替换实际上相当简单的。当更新css依赖模块时,此loader在后台使用module-hot-accept来修补(patch) <style>标签
+    3. Vue Loader 此loader支持用于vue组件的HMR,提供开箱即用的体验
+* tree shaking
+    * tree shaking是一个术语,通常用于描述移除JavaScript上下文中未引用的代码(dead-code)。它依赖于ES2015模块系统中的静态结构特性,例如 import 和export。
+    * 新的webpack 4正式版本,扩展了这个检测能力,通过package.json的sideEffects属性作为标记,向compiler提供提示,标明项目中哪些文件是"pure(纯的ES2015模块)",由此可以安全地删除文件中未使用的部分
+    * package.json 中的sideEffects属性实现的
+    *  [sideEffects](https://webpack.docschina.org/guides/tree-shaking/)
+    * 结论
+        * 为了学会使用 tree shaking，你必须……
+        * 使用 ES2015 模块语法（即 import 和 export）。
+        * 在项目 package.json 文件中，添加一个 "sideEffects" 入口。
+        * 引入一个能够删除未引用代码(dead code)的压缩工具(minifier)（例如 UglifyJSPlugin）。
+
+
+ # 常用模块
+ 1. clean-webpack-plugin   
+ 2. html-webpack-plugin
+ 3. webpack-dev-server
+ 4. webpack-merge"
+ 5. uglifyjs-webpack-plugin
 
