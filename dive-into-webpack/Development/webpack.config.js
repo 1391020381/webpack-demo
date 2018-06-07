@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlguin =  require('html-webpack-plugin')
 const CleanWebapckPlugin = require('clean-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const webpack = require('webpack')
 module.exports = {
     entry:{
@@ -15,6 +16,7 @@ module.exports = {
     },
     plugins:[
         new CleanWebapckPlugin(['dist']),
+        new ExtractTextPlugin('style.css'),
         new HtmlWebpackPlguin({
             title:'Development And Hot Module Replacement'
         }),
@@ -29,7 +31,10 @@ module.exports = {
         rules:[
             {
                 test:/\.css$/,
-                use:['style-loader','css-loader']
+                use:ExtractTextPlugin.extract({
+                    fallback:'style-loader',
+                    use:'css-loader'
+                })
             }
         ]
     }
