@@ -20,7 +20,9 @@ class Router {
   }
 
   load (path) {
-    if (path === '/') path = '/foo'
+    if (path === '/') {
+      path = '/foo'
+    }
     const view = new routes[path]()
     view.mount(document.body)
   }
