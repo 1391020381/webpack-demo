@@ -19,3 +19,4 @@
    1. V1 -> V2(需要按官网迁移指南做)
    2. V2 -> V3  直接升级  npm update
 
+ * [手摸手，带你用合理的姿势使用webpack4](https://juejin.im/post/5b5d6d6f6fb9a04fea58aabc)
