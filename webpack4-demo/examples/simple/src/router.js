@@ -1,9 +1,10 @@
-import foo from './views/foo/index'
-import bar from './views/bar/index'
+import 'regenerator-runtime/runtime'
+// import foo from './views/foo/index'
+// import bar from './views/bar/index'
 
 const routes = {
-  '/foo': foo,
-  '/bar': bar
+  '/foo': () => import('./views/foo'),
+  '/bar': () => import('./views/bar')
 }
 
 class Router {
@@ -19,11 +20,13 @@ class Router {
     this.load(path)
   }
 
-  load (path) {
+  async load (path) {
     if (path === '/') {
       path = '/foo'
     }
-    const view = new routes[path]()
+    const View = (await routes[path]()).default
+    // const view = new routes[path]()
+    const view = new View()
     view.mount(document.body)
   }
 }

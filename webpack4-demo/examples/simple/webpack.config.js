@@ -2,7 +2,7 @@ const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const history = require('connect-history-api-fallback')
 const convert = require('koa-connect')
-
+const webpack = require('webpack')
 const dev = Boolean(process.env.WEBPACK_SERVE)
 
 module.exports = {
@@ -11,7 +11,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js'
+    filename: dev ? '[name].js ' : '[chunkhash].js',
+    chunkFilename: '[chunkhash].js'
   },
   module: {
     rules: [
@@ -45,15 +46,22 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: './src/index.html',
       chunksSortMode: 'none'
-    })
-  ]
+    }),
+    new webpack.HashedModuleIdsPlugin()
+  ],
+  optimization: {
+    runtimeChunk: true,
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
 }
 
 if (dev) {
   module.exports.serve = {
     port: 8080,
     add: app => {
-      app.use(convert(history()))
+      app.use(convert(history({})))
     }
   }
 }
