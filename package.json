@@ -1,7 +1,7 @@
 {
   "name": "webpack-demo",
   "version": "1.0.0",
-  "description": "![](https://github.com/1391020381/webpack-demo/blob/master/img/webpack.png?raw=true)",
+  "description": "![](https://github.com/1391020381/webpack-demo/blob/master/img/webpack.png?raw=true) # webpack概述 # 功能进化 1. webpack V1    * 编译、打包    * HMR(模块热更新)    * 代码分割    * 文件处理  2. webpack v2    * Tree Shaking (引用但未使用,会被出掉)    * ESmodule    * 动态 Import<import()一个函数>    3. webpack v3     * Scope Hoisting(作用域提升)  <可以提高打包后代码运行速度>     *  Magic Comments(配合动态import使用)     # 版本迁移    1. V1 -> V2(需要按官网迁移指南做)    2. V2 -> V3  直接升级  npm update",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,34 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/1391020381/webpack-demo.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/1391020381/webpack-demo/issues"
   },
-  "homepage": "https://github.com/1391020381/webpack-demo#readme",
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.6",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "connect-history-api-fallback": "^1.5.0",
-    "css-loader": "^1.0.0",
-    "eslint": "^5.3.0",
-    "eslint-config-enough": "^0.3.4",
-    "eslint-loader": "^2.1.0",
-    "express": "^4.16.3",
-    "file-loader": "^1.1.11",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "http-proxy-middleware": "^0.18.0",
-    "opn": "^5.3.0",
-    "style-loader": "^0.22.1",
-    "url-loader": "^1.0.1",
-    "webpack": "^3.12.0",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-middleware": "^3.0.1",
-    "webpack-hot-middleware": "^2.21.2",
-    "webpack-serve": "^2.0.2"
-  }
+  "homepage": "https://github.com/1391020381/webpack-demo#readme"
 }
