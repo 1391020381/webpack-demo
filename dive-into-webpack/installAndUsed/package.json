@@ -1,0 +1,20 @@
+{
+  "name": "installandused",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^0.28.11",
+    "csv-loader": "^2.1.1",
+    "file-loader": "^1.1.11",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.11.0",
+    "webpack-cli": "^3.0.2",
+    "xml-loader": "^1.2.1"
+  }
+}
