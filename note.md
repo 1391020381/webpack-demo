@@ -24,4 +24,49 @@ new webpack.ProvidePlugin({
 
 * publicPath 可以给单独的资源加比如  img   
 
-* devtool source-map
+* devtool source-mapnoParse
+
+
+* noParse
+* IgnorePlugin
+* DllPlugin
+
+```
+// 需要在 index.html中引用 __dll_react.js
+let path = require('path')
+let webpack  = require('webpack')
+module.export = {
+  model:'development',
+  entry{
+    react:['react','react-dom']
+  },
+  output:{
+    filename:'_dll_[name].js',
+    path:path.resolve(__dirname,'dist'),
+    library:'__dll_[name]'
+  },
+  plugins: [
+		new webpack.DllPlugin({
+			path: path.join(__dirname, "dist", "[name]-manifest.json"),
+			name: "[name]_[fullhash]"
+		})
+	]
+}
+
+
+```
+
+```
+// webpack.config.js
+
+module.export  = {
+  plugins:[
+    new webpack.DllReferencePlugin({
+      manifest:path.resolve(__dirname,'dist','manifest.json')
+    }),
+    new webpack.IgnorePlugin(/\.\/locale/,/moment/)
+  ]
+}
+
+
+```
