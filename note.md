@@ -70,3 +70,35 @@ module.export  = {
 
 
 ```
+
+* happypack
+
+
+* tree-shaking    //  需要 es6 import 代码
+* scope hosting 作用域提升
+
+* 抽离公共代码  // 多入口  代码分离 optimization  SplitChunksPlugin
+* 懒加载  
+* 热更新
+
+```
+optimization :{
+  splitChunks:{
+    cacheGroup:{
+      common:{
+        chunks:'initial',
+        minSize:0,
+        minChunk:2
+      }
+    },
+    vendor:{
+      priority:1,
+      test:/node_module/,
+      chunks:'initial',
+      minSize:0,
+      minChunks:2
+    }
+  }
+}
+
+```
